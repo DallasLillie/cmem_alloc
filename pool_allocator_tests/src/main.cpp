@@ -94,6 +94,7 @@ int main(int argc, char** argv)
 	//todo: there are some other hardcoded include dirs too
 	//todo: why is this scoping the way that it is
 	//todo: warnings
+	//todo: template for telling visual studio how to organize my projects
 	::testing::InitGoogleTest(&argc, argv);
 
 	int result = RUN_ALL_TESTS();
