@@ -137,9 +137,6 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\static_libraries\GoogleTest\GoogleTest\GoogleTest.vcxproj">
-      <Project>{e96f96e2-4c10-4d7f-a2e9-cf16b5411473}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\pool_allocator\pool_allocator.vcxproj">
       <Project>{42d27e36-2603-4c94-9de3-9beaa95e08e0}</Project>
     </ProjectReference>
