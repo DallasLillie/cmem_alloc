@@ -1,5 +1,11 @@
+#include "pch.h"
+
+TEST(TestCaseName, TestName) {
+  EXPECT_EQ(1, 1);
+  EXPECT_TRUE(true);
+}
+
 //todo: what's the "Test Adapter for Google Test"
-#include "gtest/gtest.h"
 #include "PoolAllocator.h"
 
 
@@ -88,22 +94,22 @@ TEST(PoolAllocCtorTest, Large)
 
 
 
-int main(int argc, char** argv)
-{
-	//todo: when this repo is cloned, there's a hard-coded include dir to the google-test library. which is lame.
-	//todo: there are some other hardcoded include dirs too
-	//todo: why is this scoping the way that it is
-	//todo: warnings
-	//todo: template for telling visual studio how to organize my projects
-	::testing::InitGoogleTest(&argc, argv);
-
-	int result = RUN_ALL_TESTS();
-
-	//todo: why can i do this
-	//PoolAllocator poola();
-
-	std::cout << "Press Enter to continue . . ." ;
-	std::cin.get();
-	return result;
-
-}
+//int main(int argc, char** argv)
+//{
+//	//todo: when this repo is cloned, there's a hard-coded include dir to the google-test library. which is lame.
+//	//todo: there are some other hardcoded include dirs too
+//	//todo: why is this scoping the way that it is
+//	//todo: warnings
+//	//todo: template for telling visual studio how to organize my projects
+//	::testing::InitGoogleTest(&argc, argv);
+//
+//	int result = RUN_ALL_TESTS();
+//
+//	//todo: why can i do this
+//	//PoolAllocator poola();
+//
+//	std::cout << "Press Enter to continue . . .";
+//	std::cin.get();
+//	return result;
+//
+//}

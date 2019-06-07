@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{353d02f7-ceb3-4693-8b68-90438c441e6c}</ProjectGuid>
+    <ProjectGuid>{46e9dcb8-8bfd-43be-a654-543d81ef19b4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
@@ -32,9 +32,6 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)pool_allocator\src;$(IncludePath)</IncludePath>
-  </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -48,8 +45,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\pool_allocator\pool_allocator.vcxproj">
-      <Project>{42d27e36-2603-4c94-9de3-9beaa95e08e0}</Project>
+    <ProjectReference Include="..\stack_allocator\stack_allocator.vcxproj">
+      <Project>{2fa7fed2-704c-44e9-bce6-b227cdcfab12}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
