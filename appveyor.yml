@@ -5,6 +5,5 @@ install:
 - git pull
 - .\bootstrap-vcpkg.bat
 - cd %APPVEYOR_BUILD_FOLDER%
-
-vcpkg install gtest:x86-windows
-vcpkg install gtest:x64-windows
+- vcpkg install gtest:x86-windows
+- vcpkg install gtest:x64-windows
