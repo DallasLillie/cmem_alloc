@@ -3,7 +3,7 @@ image: Visual Studio 2019
 cache: c:\tools\vcpkg\installed\
 
 install:
-- git clone hhtps://github.com/Microsoft/vcpkg C:\Tools\vcpkg
+- git clone https://github.com/Microsoft/vcpkg C:\Tools\vcpkg
 - cd C:\Tools\vcpkg
 - .\bootstrap-vcpkg.bat
 - cd %APPVEYOR_BUILD_FOLDER%
