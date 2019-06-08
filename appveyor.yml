@@ -4,4 +4,4 @@ install:
 - nuget restore
 
 test_script:
-- %APPVEYOR_BUILD_FOLDER%\bin\%PLATFORM%\%CONFIGURATION%\pool_allocator_tests.exe
+- '%APPVEYOR_BUILD_FOLDER%\bin\%PLATFORM%\%CONFIGURATION%\pool_allocator_tests.exe'
