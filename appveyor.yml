@@ -10,4 +10,4 @@ configuration:
   - Debug
 
 test_script:
-  - '%APPVEYOR_BUILD_FOLDER%\bin\%PLATFORM%\%CONFIGURATION%\pool_allocator_tests.exe'
+  - 'powershell.exe -executionpolicy ByPass -file %APPVEYOR_BUILD_FOLDER%\run_tests.ps1 -project_dir %APPVEYOR_BUILD_FOLDER%'
