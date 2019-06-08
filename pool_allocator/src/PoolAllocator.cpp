@@ -5,6 +5,12 @@
 #define MAX_POOL_SIZE 0x11111111
 #define MAX_POOL_ITEM_SIZE 0x04444444
 
+#ifdef _WIN64
+typedef uint64_t paddr;
+#elif _WIN32
+typedef uint32_t paddr;
+#endif
+
 PoolAllocator::PoolAllocator(uint32_t numPoolItems, uint32_t poolItemSize)
 	: numPoolItems(numPoolItems), poolItemSize(poolItemSize), numCurrentlyAllocated(0)
 {
@@ -59,11 +65,11 @@ PoolAllocator::~PoolAllocator()
 
 void PoolAllocator::Init()
 {
-	uint32_t *blockHeader = static_cast<uint32_t*>(pool);
+	paddr*blockHeader = static_cast<paddr*>(pool);
 	for (uint32_t i = 0; i < this->numPoolItems; ++i)
 	{
-		*blockHeader = (uint32_t)blockHeader + (poolItemSize + sizeof(void*));
-		blockHeader = (uint32_t*)((uint32_t)blockHeader + (poolItemSize + sizeof(void*)));
+		*blockHeader = (paddr)blockHeader + (poolItemSize + sizeof(void*));
+		blockHeader = (paddr*)((paddr)blockHeader + (poolItemSize + sizeof(void*)));
 		//todo: last node should be some kinda nullptr thing
 	}
 }
@@ -80,7 +86,7 @@ void* PoolAllocator::Allocate()
 		//should i print some kind of error?
 		return nullptr;
 	}
-	void *r = (void*)((uint32_t)top + sizeof(void*));
+	void *r = (void*)((paddr)top + sizeof(void*));
 	top = (*(void **)top);
 	return r;
 }
@@ -93,24 +99,24 @@ bool PoolAllocator::Free(void *block)
 	//todo: all this type conversion stuff feels like it could be macro'd or something
 
 	//Block is actually within pool
-	if ((uint32_t)block <= (uint32_t)pool)
+	if ((paddr)block <= (paddr)pool)
 	{
 		return false;
 	}
-	else if ((uint32_t)block > (uint32_t)pool + numPoolItems * (poolItemSize + sizeof(void*)) - 1)
+	else if ((paddr)block > (paddr)pool + numPoolItems * (poolItemSize + sizeof(void*)) - 1)
 	{
 		return false;
 	}
 
 	//Block pointer actually points to the start of a block
-	if (((uint32_t)block - sizeof(void*)) % (poolItemSize + sizeof(void*)) != 0)
+	if (((paddr)block - sizeof(void*)) % (poolItemSize + sizeof(void*)) != 0)
 	{
 		return false;
 	}
 
 
 	//Point the block at current top
-	void **node = (void**)((uint32_t)block - sizeof(void*));
+	void **node = (void**)((paddr)block - sizeof(void*));
 	*node = top;
 
 	//Change top to point to the block
