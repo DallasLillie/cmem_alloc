@@ -1,13 +1,13 @@
 image: Visual Studio 2019
 
 install:
-- nuget restore
+  - nuget restore
 
 platform:
-- x64
-	
+  - x64
+
 configuration:
-- Debug
-	
+  - Debug
+
 test_script:
-- '%APPVEYOR_BUILD_FOLDER%\bin\%PLATFORM%\%CONFIGURATION%\pool_allocator_tests.exe'
+  - '%APPVEYOR_BUILD_FOLDER%\bin\%PLATFORM%\%CONFIGURATION%\pool_allocator_tests.exe'
